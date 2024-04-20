@@ -1,0 +1,66 @@
+<h1 mat-dialog-title>{{tituloAccion}}Paciente</h1>
+<div mat-dialog-content> 
+
+<form [formGroup]="formPaciente">
+    <mat-grid-list cols="1" rowHeight="80px">
+        <mat-grid-tile>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre Completo</mat-label>
+                <input matInput formControlName="nombreCompleto" autocomplete="off">
+              </mat-form-field>
+        </mat-grid-tile>
+       
+       
+        <mat-grid-tile>
+            <mat-form-field appearance="outline">
+                <mat-label>Especialidad</mat-label>
+                <mat-select formControlName="idEspecialidad">
+                  <mat-option *ngFor="let item of listaEspecialidad"[value]="item.idEspecialidad">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </mat-grid-tile>
+
+
+       
+        <mat-grid-tile>
+            <mat-form-field >
+
+               <mat-label>Telefono</mat-label>
+            <input matInput formControlName="telefono" autocomplete="off" type="number">
+           
+            </mat-form-field>
+        </mat-grid-tile>
+
+       
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha de Cita</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fechaContrato">
+                    <mat-datepicker-toggle matIconffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  
+            </mat-grid-tile>
+    
+       
+
+
+        
+        
+      
+      
+
+</form>
+
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button  color="primary"
+    (click)="addEditPaciente()"
+    [disabled]="addEditPaciente"
+    >{{botonAccion}}
+    </button>
+
+</div>
