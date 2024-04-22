@@ -57,21 +57,21 @@ export class DialogsAddEditComponent implements OnInit {
 
     this._especialidadServicio.getList().subscribe({
       next: (data) => {
-       
+
         if (Array.isArray(data)) {
           this.listaEspecialidad = data;
         } else {
-          this.listaEspecialidad = [data]; 
+          this.listaEspecialidad = [data];
         }
-      }, 
+      },
       error: (e) => { }
     });
-    
+
 
   }
 
   mostrarAlerta(message: string, accion: string) {
-    this._snackBar.open(message, accion, { 
+    this._snackBar.open(message, accion, {
       horizontalPosition: "end",
       verticalPosition: "top",
       duration: 2500
@@ -82,50 +82,50 @@ export class DialogsAddEditComponent implements OnInit {
     console.log(this.formPaciente.value);
 
     const modelo: Paciente = {
-      idPaciente: 0, 
+      idPaciente: 0,
       nombreCompleto: this.formPaciente.value.nombreCompleto,
       idEspecialidad: this.formPaciente.value.idEspecialidad,
-      telefono: this.formPaciente.value.Telefono,
+      telefono: this.formPaciente.value.telefono,
       fechaCita: moment(this.formPaciente.value.fechaCita).format("DD/MM/YYYY")
     }
 
 
-    if(this.dataPaciente==null){
-this._pacienteServicio.add(modelo).subscribe({
-      next: (data) => {
-        this.mostrarAlerta("La cita fue registrada", "Listo");
-        this.dialogoReferencia.close("creado");
-      },
-      error: (e) => {
-        this.mostrarAlerta("No se puede registrar cita", "Error");
-        console.error(e); 
-      }
-    })
+    if (this.dataPaciente == null) {
+      this._pacienteServicio.add(modelo).subscribe({
+        next: (data) => {
+          this.mostrarAlerta("La cita fue registrada", "Listo");
+          this.dialogoReferencia.close("creado");
+        },
+        error: (e) => {
+          this.mostrarAlerta("No se puede registrar cita", "Error");
+          console.error(e);
+        }
+      })
 
 
-    }else{
-      this._pacienteServicio.update(this.dataPaciente.idPaciente,modelo).subscribe({
+    } else {
+      this._pacienteServicio.update(this.dataPaciente.idPaciente, modelo).subscribe({
         next: (data) => {
           this.mostrarAlerta("La cita fue editada", "Listo");
           this.dialogoReferencia.close("editado");
         },
         error: (e) => {
           this.mostrarAlerta("No se puede editar cita", "Error");
-          console.error(e); 
+          console.error(e);
         }
       })
     }
 
-    
+
   }
 
   ngOnInit(): void {
     this._especialidadServicio.getList().subscribe({
-      next:(data) =>{
-        this.listaEspecialidad=data;
+      next: (data) => {
+        this.listaEspecialidad = data;
         console.log(data);
       },
-      error:(error) =>{
+      error: (error) => {
         console.log(error)
       }
     })
@@ -133,15 +133,15 @@ this._pacienteServicio.add(modelo).subscribe({
       this.formPaciente.patchValue({
         nombreCompleto: this.dataPaciente.nombreCompleto,
         idEspecialidad: this.dataPaciente.idEspecialidad,
-        Telefono: this.dataPaciente.telefono, 
+        Telefono: this.dataPaciente.telefono,
         fechaCita: moment(this.dataPaciente.fechaCita, 'DD/MM/YYYY')
       })
-      
-      this.tituloAccion="Editar";
-      this.botonAccion="Actualizar";
-      
+
+      this.tituloAccion = "Editar";
+      this.botonAccion = "Actualizar";
+
       ;
     }
-    
+
   }
 }

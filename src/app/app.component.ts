@@ -29,7 +29,7 @@ export class AppComponent implements AfterViewInit,OnInit{
   }
 
   ngOnInit(): void {
-      
+      this.mostrarPaciente();
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
