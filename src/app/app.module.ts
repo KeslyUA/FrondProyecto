@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 //mas rato
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+
 
 
 //para trabajar con las tablas
@@ -22,13 +24,16 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
 import{MatIconModule}from '@angular/material/icon';
 import{MatGridListModule} from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DialogoDeleteComponent } from './Dialogs/dialogo-delete/dialogo-delete.component';
+import { DialogsAddEditComponent } from './Dialogs/dialogs-add-edit/dialogs-add-edit.component';
 
-//import {MatDialog} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    
+    DialogoDeleteComponent,
+    DialogsAddEditComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSnackBarModule,
     MatGridListModule,
     MatDialogModule
-    
     
     
   ],

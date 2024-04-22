@@ -12,11 +12,11 @@ import { Injectable } from '@angular/core';
 export class PacienteService {
 
   private endpoint:string=environment.endPoint;
-  private apiUrl:string=this.endpoint + "paciente";
+  private apiUrl:string=this.endpoint + "paciente/";
   constructor(private http:HttpClient) { }
 
-getList():Observable<Paciente>{
-  return this.http.get<Paciente>(`${this.apiUrl}lista`);
+getList():Observable<Paciente[]>{
+  return this.http.get<Paciente[]>(`${this.apiUrl}lista`);
   
 }
 

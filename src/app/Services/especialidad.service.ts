@@ -10,13 +10,13 @@ import { Especialidad } from '../Interfaces/especialidad';
 export class EspecialidadService {
 
 private endpoint:string=environment.endPoint;
-private apiUrl:string=this.endpoint + "especialidad";
+private apiUrl:string=this.endpoint + "especialidad/";
 
 
 
   constructor(private http:HttpClient) { }
-getList():Observable<Especialidad>{
-  return this.http.get<Especialidad>(`${this.apiUrl}lista`);
+getList():Observable<Especialidad[]>{
+  return this.http.get<Especialidad[]>(`${this.apiUrl}lista`);
   
 }
 

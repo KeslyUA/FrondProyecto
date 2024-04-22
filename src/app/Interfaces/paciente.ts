@@ -5,5 +5,5 @@ export interface Paciente{
     idEspecialidad:number,
     nombreEspecialidad?:string,
     telefono:number,
-    fechaContrato:string
+    fechaCita:string
 }
