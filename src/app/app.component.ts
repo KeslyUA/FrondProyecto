@@ -43,7 +43,7 @@ export class AppComponent implements AfterViewInit,OnInit{
   }
   mostrarPaciente(){
     this._pacienteServicio.getList().subscribe({
-      next:(dataRespons) =>{console.log(dataRespons);this.dataSource.data=dataRespons;
+      next:(dataRespons) =>{console.log('listaa',dataRespons);this.dataSource.data=dataRespons;
     
     },error(e) { }
 
